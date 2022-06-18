@@ -1,4 +1,5 @@
 using Basket.API.Repositories;
+using MassTransit;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
@@ -41,6 +42,20 @@ namespace Basket.API
 
             // Repos
             services.AddScoped<ICartRepository, CartRepository>();
+
+            // MassTransit
+            services.AddMassTransit(config =>
+            {
+                config.UsingRabbitMq((ctx, cfg) =>
+                {
+                    cfg.Host(Configuration["EventBusSettings:HostAddress"]);
+                });
+            });
+
+            services.AddMassTransitHostedService();
+
+            // Auto Mapper
+            services.AddAutoMapper(typeof(Startup));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
