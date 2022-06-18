@@ -53,7 +53,7 @@ namespace Basket.API.Services
 
         public async Task<Cart> UpdateCart(Cart cart)
         {
-            return await _repository.UpdateCart(cart)
+            return await _repository.UpdateCart(cart);
         }
     }
 }
