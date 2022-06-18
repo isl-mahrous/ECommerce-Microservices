@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using Basket.API.Entities;
 using Basket.API.Repositories;
+using Basket.API.Services;
 using EventBus.Messages.Events;
 using MassTransit;
 using Microsoft.AspNetCore.Http;
@@ -17,22 +18,17 @@ namespace Basket.API.Controllers
     [ApiController]
     public class CartController : ControllerBase
     {
-        private readonly ICartRepository _repository;
-        private readonly IMapper _mapper;
-        private readonly IPublishEndpoint _publishEndpoint;
-
-        public CartController(ICartRepository repository, IMapper mapper, IPublishEndpoint publishEndpoint)
+        private readonly ICartService _service;
+        public CartController(ICartService service)
         {
-            _repository = repository ?? throw new ArgumentNullException(nameof(repository));
-            _mapper = mapper ?? throw new ArgumentNullException(nameof(mapper));
-            _publishEndpoint = publishEndpoint ?? throw new ArgumentNullException(nameof(publishEndpoint));
+            _service = service;
         }
 
         [HttpGet("{userName}", Name = "GetCart")]
         [ProducesResponseType(typeof(Cart), (int)HttpStatusCode.OK)]
         public async Task<ActionResult<Cart>> GetCart(string userName)
         {
-            var cart = await _repository.GetCart(userName);
+            var cart = await _service.GetCart(userName);
             return Ok(cart ?? new Cart(userName));
         }
 
@@ -40,14 +36,14 @@ namespace Basket.API.Controllers
         [ProducesResponseType(typeof(Cart), (int)HttpStatusCode.OK)]
         public async Task<ActionResult<Cart>> UpdateCart([FromBody] Cart cart)
         {
-            return Ok(await _repository.UpdateCart(cart));
+            return Ok(await _service.UpdateCart(cart));
         }
 
         [HttpDelete("{userName}", Name = "DeleteCart")]
         [ProducesResponseType(typeof(void), (int)HttpStatusCode.OK)]
         public async Task<IActionResult> DeleteCart(string userName)
         {
-            await _repository.DeleteCart(userName);
+            await _service.DeleteCart(userName);
             return Ok();
         }
 
@@ -57,21 +53,16 @@ namespace Basket.API.Controllers
         [ProducesResponseType((int)HttpStatusCode.BadRequest)]
         public async Task<IActionResult> Checkout([FromBody] CartCheckout cartCheckout)
         {
-            var cart = await _repository.GetCart(cartCheckout.UserName);
-            if (cart == null)
+            try
+            {
+               await _service.Checkout(cartCheckout);
+                return Accepted();
+            }
+            catch
             {
                 return BadRequest();
             }
 
-            // send checkout event to rabbitmq
-            var eventMessage = _mapper.Map<BasketCheckoutEvent>(cartCheckout);
-            eventMessage.TotalPrice = cart.TotalPrice;
-            await _publishEndpoint.Publish(eventMessage);
-
-            // remove the basket
-            await _repository.DeleteCart(cart.UserName);
-
-            return Accepted();
         }
     }
 }

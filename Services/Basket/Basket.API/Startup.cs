@@ -1,4 +1,5 @@
 using Basket.API.Repositories;
+using Basket.API.Services;
 using MassTransit;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -42,6 +43,9 @@ namespace Basket.API
 
             // Repos
             services.AddScoped<ICartRepository, CartRepository>();
+
+            // Service
+            services.AddScoped<ICartService, CartService>();
 
             // MassTransit
             services.AddMassTransit(config =>
