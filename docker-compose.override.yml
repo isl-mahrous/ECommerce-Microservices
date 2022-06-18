@@ -15,6 +15,15 @@ services:
     ports:
       - "6379:6379"
 
+  orderdb:
+    container_name: orderdb
+    environment:
+        SA_PASSWORD: "Islam1234"
+        ACCEPT_EULA: "Y"
+    restart: always
+    ports:
+        - "1433:1433"
+
   portainer:
     container_name: portainer
     restart: always
@@ -44,3 +53,9 @@ services:
       - basketdb
     ports:
       - "8001:80"
+  ordering.api:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+    ports:
+      - "80"
+
