@@ -1,6 +1,5 @@
 # Floward Task
 
-**Refer the main repository -> https://github.com/aspnetrun/run-aspnetcore-microservices**
 
 This repository is inspired by the below udemy course.
 
