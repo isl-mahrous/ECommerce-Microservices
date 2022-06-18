@@ -8,7 +8,15 @@ This repository is inspired by the below udemy course.
 
 See the overall picture of **implementations on microservices with .net tools** on real-world **e-commerce microservices** project;
 
+## The Overall Picture of The Project:
+
 ![microservices_remastered](https://user-images.githubusercontent.com/1147445/110304529-c5b70180-800c-11eb-832b-a2751b5bda76.png)
+
+
+
+## What Is Done So Far:
+
+![image](https://user-images.githubusercontent.com/94698429/174092398-93f4ae06-5e13-4307-8e2a-84c5a075b769.png)
 
 There is a couple of microservices which implemented **e-commerce** modules over **Catalog, Basket and **Ordering** microservices with **NoSQL (MongoDB, Redis)** and **Relational databases (Sql Server)** with communicating over **RabbitMQ Event Driven Communication** and using **Ocelot API Gateway**.
 
@@ -42,7 +50,6 @@ docker-compose -f docker-compose.yml -f docker-compose.override.yml up -d
 
 >Note: If you are running this application in macOS then use `docker.for.mac.localhost` as DNS name in `.env` file and the above URLs instead of `host.docker.internal`.
 
-
 ## Documentation and Details:
 **Design and Architectual Patterns used:**
 - N-Tier Architecture in both Catalog and Basket Services
@@ -59,3 +66,4 @@ docker-compose -f docker-compose.yml -f docker-compose.override.yml up -d
 
 ## Mentors
 * **Mehmet Ozkaya** - [mehmetozkaya](https://github.com/mehmetozkaya)
+* **Mohamed Fathy** - [mohamed-fathy96](https://github.com/mohamed-fathy96)
