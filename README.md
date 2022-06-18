@@ -42,8 +42,21 @@ docker-compose -f docker-compose.yml -f docker-compose.override.yml up -d
 
 
 >Note: If you are running this application in macOS then use `docker.for.mac.localhost` as DNS name in `.env` file and the above URLs instead of `host.docker.internal`.
+
+
+## Documentation and Details:
+**Design and Architectual Patterns used:**
+- N-Tier Architecture in both Catalog and Basket Services
+- Generic Repository Pattern (with ability to add query expressions for specification)
+- Clean Architecture and Domain Driven Design in Order Service
+- Event-driven Architecture and Async communication between services using RabbitMQ as the Message Broker
+- Mediator and CQRS pattern using MediatR NuGet package in the Ordering Service
+- Dependency Injection is used to ensure separation of concerns and loose coupling between all services and classes
+- API Gateway Routing Pattern or BFF (Backend for frontend) which was implemented using Ocelot NuGet Package
+
+
 ## Authors
-* **Islam Mahrous** - *Initial work* - [mehmetozkaya](https://github.com/isl-mahrous)
+* **Islam Mahrous** - *Adaptation* - [Islam Mahrous](https://github.com/isl-mahrous)
 
 ## Mentors
 * **Mehmet Ozkaya** - *Initial work* - [mehmetozkaya](https://github.com/mehmetozkaya)
