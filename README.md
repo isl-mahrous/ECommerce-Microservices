@@ -1,6 +1,5 @@
 # Floward Task
 
-**Refer the main repository -> https://github.com/aspnetrun/run-aspnetcore-microservices**
 
 This repository is inspired by the below udemy course.
 
@@ -56,7 +55,7 @@ docker-compose -f docker-compose.yml -f docker-compose.override.yml up -d
 
 
 ## Authors
-* **Islam Mahrous** - *Adaptation* - [Islam Mahrous](https://github.com/isl-mahrous)
+* **Islam Mahrous**  - [Islam Mahrous](https://github.com/isl-mahrous)
 
 ## Mentors
-* **Mehmet Ozkaya** - *Initial work* - [mehmetozkaya](https://github.com/mehmetozkaya)
+* **Mehmet Ozkaya** - [mehmetozkaya](https://github.com/mehmetozkaya)
