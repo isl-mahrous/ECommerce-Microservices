@@ -36,6 +36,10 @@
           "Port": "80"
         }
       ],
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "Bearer",
+        "AllowedScopes": []
+      },
       "UpstreamPathTemplate": "/testJwt",
       "UpstreamHttpMethod": [ "GET" ],
       "FileCacheOptions": { "TtlSeconds": 30 }

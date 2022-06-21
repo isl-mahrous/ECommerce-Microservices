@@ -15,23 +15,14 @@ services:
     ports:
       - "6379:6379"
 
-  orderdb:
-    container_name: orderdb
+  sqldb:
+    container_name: sqldb
     environment:
-        SA_PASSWORD: "Islam1234"
+        SA_PASSWORD: "Islam@12345678"
         ACCEPT_EULA: "Y"
     restart: always
     ports:
         - "1433:1433"
-
-  userdb:
-    container_name: userdb
-    environment:
-        SA_PASSWORD: "Islam1234"
-        ACCEPT_EULA: "Y"
-    restart: always
-    ports:
-        - "1434:1433"
 
   rabbitmq:
     container_name: rabbitmq
@@ -39,16 +30,6 @@ services:
     ports:
         - "5672:5672"
         - "15672:15672"
-
-  portainer:
-    container_name: portainer
-    restart: always
-    ports:
-      - "8080:8000"
-      - "9000:9000"
-    volumes:
-      - /var/run/docker.sock:/var/run/docker.sock
-      - portainer_data:/data
 
   catalog.api:
     container_name: catalog.api
@@ -76,10 +57,10 @@ services:
     container_name: ordering.api
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
-      - "ConnectionStrings:OrderingConnectionString=Server=orderdb;Database=OrderDb;User Id=sa;Password=Islam1234"  
+      - "ConnectionStrings:OrderingConnectionString=Server=sqldb;Database=OrdersSqlDb;User Id=sa;Password=Islam@12345678"  
       - "EventBusSettings:HostAddress=amqp://guest:guest@rabbitmq:5672"
     depends_on:
-        - orderdb
+        - sqldb
         - rabbitmq
     ports:
         - "8004:80"
@@ -88,9 +69,9 @@ services:
     container_name: identity.api
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
-      - "ConnectionStrings:UserDbConnectionString=Server=userdb;Database=UsersDb;User Id=sa;Password=Islam1234"  
+      - "ConnectionStrings:UserDbConnectionString=Server=sqldb;Database=UsersSqlDb;User Id=sa;Password=Islam@12345678"  
     depends_on:
-      - userdb
+      - sqldb
     ports:
       - "8003:80"
 
@@ -105,6 +86,3 @@ services:
         - identity.api
     ports:
       - "8010:80"
-
-
-

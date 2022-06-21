@@ -35,7 +35,9 @@ namespace Identity.Api
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "Identity.Api", Version = "v1" });
             });
 
-            services.AddDbContext<UserContext>(op => op.UseSqlServer(Configuration.GetConnectionString("UserDbConnectionString")));
+            services.AddDbContext<UserContext>(op => 
+            op.UseSqlServer(Configuration.GetConnectionString("UserDbConnectionString")));
+            
             services.AddIdentityServices(Configuration);
 
             // Token Service
@@ -48,8 +50,10 @@ namespace Identity.Api
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, UserContext userContext)
         {
+            //userContext.Database.EnsureCreated();
+            userContext.Database.Migrate();
 
             if (env.IsDevelopment())
             {

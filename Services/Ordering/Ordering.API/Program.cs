@@ -13,7 +13,7 @@ namespace Ordering.API
         {
             CreateHostBuilder(args)
                 .Build()
-                .MigrateDatabase<OrderContext>((context, services) =>
+                .MigrateDatabase<OrderContext>( (context, services) =>
                 {
                     var logger = services.GetService<ILogger<OrderContextSeed>>();
                     OrderContextSeed

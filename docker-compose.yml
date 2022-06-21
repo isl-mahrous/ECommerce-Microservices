@@ -7,17 +7,11 @@ services:
   basketdb:
     image: redis:alpine
 
-  orderdb:
-    image: mcr.microsoft.com/mssql/server:2017-latest
-
-  userdb:
+  sqldb:
     image: mcr.microsoft.com/mssql/server:2017-latest
 
   rabbitmq:
     image: rabbitmq:3-management-alpine
-
-  portainer:
-    image: portainer/portainer-ce
 
   catalog.api:
     image: ${DOCKER_REGISTRY-}catalogapi
@@ -51,5 +45,3 @@ services:
 
 volumes:
   mongo_data:
-  portainer_data:
-
