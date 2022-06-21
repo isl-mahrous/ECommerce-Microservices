@@ -1,5 +1,7 @@
+using Identity.Api.Entities;
 using Identity.Api.Persistence;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -14,23 +16,23 @@ namespace Identity.Api
 {
     public class Program
     {
-        public static void Main(string[] args)
+        public static async Task Main(string[] args)
         {
             var host = CreateHostBuilder(args).Build();
             using (var serviceScope = host.Services.CreateScope())
             {
                 var service = serviceScope.ServiceProvider;
                 var loggerFactory = service.GetRequiredService<ILoggerFactory>();
-                var context = service.GetRequiredService<UserContext>();
-
+                
                 try
                 {
-                    context.Database.Migrate();
+                    var context = service.GetRequiredService<UserContext>();
+                    await context.Database.MigrateAsync();
                 }
                 catch (Exception ex)
                 {
                     var logger = service.GetRequiredService<ILogger<Program>>();
-                    logger.LogError(ex, "An error occurred.");
+                    logger.LogError(ex, "An error occurred during migration");
                 }
             }
             host.Run();

@@ -36,8 +36,6 @@ namespace Identity.Api
             });
 
             services.AddDbContext<UserContext>(op => op.UseSqlServer(Configuration.GetConnectionString("UserDbConnectionString")));
-            
-
             services.AddIdentityServices(Configuration);
 
             // Token Service
