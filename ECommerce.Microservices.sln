@@ -41,6 +41,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Catalog.UnitTests", "Servic
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Identity.UnitTests", "Services\Identity\Identity.UnitTests\Identity.UnitTests.csproj", "{0ED3164B-369F-4E47-A652-98D35402F5AC}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Basket.UnitTests", "Services\Basket\Basket.UnitTests\Basket.UnitTests.csproj", "{F98C219D-7CEC-4751-B527-F8C4246005EB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -95,6 +97,10 @@ Global
 		{0ED3164B-369F-4E47-A652-98D35402F5AC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0ED3164B-369F-4E47-A652-98D35402F5AC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0ED3164B-369F-4E47-A652-98D35402F5AC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F98C219D-7CEC-4751-B527-F8C4246005EB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F98C219D-7CEC-4751-B527-F8C4246005EB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F98C219D-7CEC-4751-B527-F8C4246005EB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F98C219D-7CEC-4751-B527-F8C4246005EB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -115,6 +121,7 @@ Global
 		{F2616ABD-1C57-4180-AC2B-8A77C4DF63F5} = {E025E59E-BFB0-476A-BFD5-C18B74ADF336}
 		{CE9C102E-61B3-4769-A4C2-7AAD69AF8CBB} = {D7C79187-6C7C-42D5-8062-379213415786}
 		{0ED3164B-369F-4E47-A652-98D35402F5AC} = {E025E59E-BFB0-476A-BFD5-C18B74ADF336}
+		{F98C219D-7CEC-4751-B527-F8C4246005EB} = {1F7E8F17-06C8-4CA5-98C1-1D04EF0E9AEF}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {5473BC85-7CA2-47F8-934B-83A8794C7B02}

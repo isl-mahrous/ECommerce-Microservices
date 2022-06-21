@@ -24,6 +24,15 @@ services:
     ports:
         - "1433:1433"
 
+  userdb:
+    container_name: userdb
+    environment:
+        SA_PASSWORD: "Islam1234"
+        ACCEPT_EULA: "Y"
+    restart: always
+    ports:
+        - "1434:1433"
+
   rabbitmq:
     container_name: rabbitmq
     restart: always
@@ -74,6 +83,17 @@ services:
         - rabbitmq
     ports:
         - "8004:80"
+
+  identity.api:
+    container_name: identity.api
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - "ConnectionStrings:UserDbConnectionString=Server=userdb;Database=UsersDb;User Id=sa;Password=Islam1234"  
+    depends_on:
+      - userdb
+    ports:
+      - "8003:80"
+
   ocelotapigw:
     container_name: ocelotapigw
     environment:
@@ -82,5 +102,9 @@ services:
         - catalog.api
         - basket.api
         - ordering.api
+        - identity.api
     ports:
       - "8010:80"
+
+
+

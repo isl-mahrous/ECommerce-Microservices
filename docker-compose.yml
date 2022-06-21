@@ -10,6 +10,9 @@ services:
   orderdb:
     image: mcr.microsoft.com/mssql/server:2017-latest
 
+  userdb:
+    image: mcr.microsoft.com/mssql/server:2017-latest
+
   rabbitmq:
     image: rabbitmq:3-management-alpine
 
@@ -34,16 +37,19 @@ services:
       context: .
       dockerfile: Services/Ordering/Ordering.API/Dockerfile
 
-
   ocelotapigw:
     image: ${DOCKER_REGISTRY-}ocelotapigw
     build:
       context: .
       dockerfile: ApiGateways/OcelotApiGW/Dockerfile
 
+  identity.api:
+    image: ${DOCKER_REGISTRY-}identityapi
+    build:
+      context: .
+      dockerfile: Services/Identity/Identity.Api/Dockerfile
+
 volumes:
   mongo_data:
   portainer_data:
-
-
 

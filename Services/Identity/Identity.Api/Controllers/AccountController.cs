@@ -37,7 +37,7 @@ namespace Identity.Api.Controllers
             try
             {
                 var user = await _service.Register(registerDto);
-                return user;
+                return Ok(user);
             }
             catch
             {
