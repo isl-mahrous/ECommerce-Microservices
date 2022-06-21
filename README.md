@@ -1,23 +1,10 @@
 # ECommerce Microservices
 
-
-This repository is inspired by the below udemy course.
-
-[![Screenshot_6](https://user-images.githubusercontent.com/1147445/85838002-907dc280-b7a1-11ea-8219-f84e3af8ba52.png)](https://www.udemy.com/course/microservices-architecture-and-implementation-on-dotnet/?couponCode=FA24745CC57592AB612A)
-
-
+The projet consists of 4 microservices which implemented **e-commerce** modules over **Catalog**, **Basket**, **Identity** and **Ordering** microservices with **NoSQL (MongoDB, Redis)** and **Relational databases (Sql Server)** with communicating over **RabbitMQ Event Driven Communication** and using **Ocelot API Gateway**.
 
 ## The Overall Picture of The Project:
 
-![microservices_remastered](https://user-images.githubusercontent.com/1147445/110304529-c5b70180-800c-11eb-832b-a2751b5bda76.png)
-
-
-
-## What Is Done So Far:
-
-![image](https://user-images.githubusercontent.com/94698429/174092398-93f4ae06-5e13-4307-8e2a-84c5a075b769.png)
-
-There is a couple of microservices which implemented **e-commerce** modules over **Catalog, Basket and **Ordering** microservices with **NoSQL (MongoDB, Redis)** and **Relational databases (Sql Server)** with communicating over **RabbitMQ Event Driven Communication** and using **Ocelot API Gateway**.
+![microservices](https://raw.githubusercontent.com/isl-mahrous/ECommerce-Microservices/master/ch1.drawio.png)
 
 
 ## Run The Project
@@ -63,4 +50,9 @@ docker-compose -f docker-compose.yml -f docker-compose.override.yml up -d
 
 ## Authors
 * **Islam Mahrous**  - [Islam Mahrous](https://github.com/isl-mahrous)
+
+
+This repository is inspired by the below udemy course.
+
+[![Screenshot_6](https://user-images.githubusercontent.com/1147445/85838002-907dc280-b7a1-11ea-8219-f84e3af8ba52.png)](https://www.udemy.com/course/microservices-architecture-and-implementation-on-dotnet/?couponCode=FA24745CC57592AB612A)
 
