@@ -1,6 +1,6 @@
 # ECommerce Microservices
 
-The projet consists of 4 microservices which implemented **e-commerce** modules over **Catalog**, **Inventory**,**Basket**, **Identity** and **Ordering** microservices with **NoSQL (MongoDB, Redis)** and **Relational databases (Sql Server)** with communicating over **RabbitMQ Event Driven Communication** and using **Ocelot API Gateway**.
+The projet consists of 5 microservices which implemented **e-commerce** modules over **Catalog**, **Inventory**,**Basket**, **Identity** and **Ordering** microservices with **NoSQL (MongoDB, Redis)** and **Relational databases (Sql Server)** with communicating over **RabbitMQ Event Driven Communication** and using **Ocelot API Gateway**.
 
 ## The Overall Picture of The Project:
 
