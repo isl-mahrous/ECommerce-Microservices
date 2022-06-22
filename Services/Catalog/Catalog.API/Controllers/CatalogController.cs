@@ -1,5 +1,8 @@
-﻿using Catalog.API.Entities;
+﻿using AutoMapper;
+using Catalog.API.Entities;
 using Catalog.API.Repositories;
+using EventBus.Messages.Events;
+using MassTransit;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
@@ -17,11 +20,15 @@ namespace Catalog.API.Controllers
     {
         private readonly IProductRepository _repository;
         private readonly ILogger<CatalogController> _logger;
+        private readonly IPublishEndpoint _publishEndpoint;
+        private readonly IMapper _mapper;
 
-        public CatalogController(IProductRepository repository, ILogger<CatalogController> logger)
+        public CatalogController(IProductRepository repository, ILogger<CatalogController> logger, IPublishEndpoint publishEndpoint, IMapper mapper)
         {
             _repository = repository;
             _logger = logger;
+            _publishEndpoint = publishEndpoint;
+            _mapper = mapper;
         }
 
         [HttpGet]
@@ -51,6 +58,10 @@ namespace Catalog.API.Controllers
         public async Task<ActionResult<Product>> CreateProduct([FromBody] Product product)
         {
             await _repository.CreateProduct(product);
+
+            // Publish Event --> TODO: Inventory Service 
+            var eventMessage = _mapper.Map<ProductAddedEvent>(product);
+            await _publishEndpoint.Publish(eventMessage);
 
             return CreatedAtRoute("GetProduct", new { id = product.Id }, product);
         }
