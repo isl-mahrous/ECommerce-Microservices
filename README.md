@@ -23,7 +23,7 @@ docker-compose -f docker-compose.yml -f docker-compose.override.yml up -d
 ```
 3. Wait for docker compose all microservices. That’s it! (some microservices need extra time to work so please wait if not worked in first shut)
 
-4. If Identity Api service doesn't work correctly, it's recommended to restart it using Docker Desktop (Migration Problem On Slower PC's)
+4. If Identity Api service doesn't work correctly, it's recommended to restart it using Docker Desktop **(Migration Problem On Slower PC's)**
 
 5. You can **launch microservices** as below urls:
 
