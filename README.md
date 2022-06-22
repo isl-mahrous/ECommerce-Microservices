@@ -1,10 +1,10 @@
 # ECommerce Microservices
 
-The projet consists of 4 microservices which implemented **e-commerce** modules over **Catalog**, **Basket**, **Identity** and **Ordering** microservices with **NoSQL (MongoDB, Redis)** and **Relational databases (Sql Server)** with communicating over **RabbitMQ Event Driven Communication** and using **Ocelot API Gateway**.
+The projet consists of 4 microservices which implemented **e-commerce** modules over **Catalog**, **Inventory**,**Basket**, **Identity** and **Ordering** microservices with **NoSQL (MongoDB, Redis)** and **Relational databases (Sql Server)** with communicating over **RabbitMQ Event Driven Communication** and using **Ocelot API Gateway**.
 
 ## The Overall Picture of The Project:
 
-![microservices](https://raw.githubusercontent.com/isl-mahrous/ECommerce-Microservices/master/ch1.drawio.png)
+![microservices](https://raw.githubusercontent.com/isl-mahrous/ECommerce-Microservices/master/Diagram.png)
 
 
 ## Run The Project
@@ -33,13 +33,14 @@ docker-compose -f docker-compose.yml -f docker-compose.override.yml up -d
 * **Ordering API -> http://host.docker.internal:8004/swagger/index.html**
 * **API Gateway -> http://host.docker.internal:8010/Catalog**
 * **Rabbit Management Dashboard -> http://host.docker.internal:15672**   -- guest/guest
-
+* **Inventory API -> In Development**
 
 
 ## Documentation and Details:
 **Design and Architectual Patterns used:**
 - N-Tier Architecture in Catalog, Identity and Basket Services
-- Generic Repository Pattern (with ability to add query expressions for specification)
+- Generic Repository Pattern
+- Sepecification Pattern
 - Services Classes to be used inside Controllers to ensure minimal code inside each action
 - Clean Architecture and Domain Driven Design in Order Service
 - Event-driven Architecture and Async communication between services using RabbitMQ as the Message Broker
